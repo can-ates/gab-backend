@@ -25,14 +25,6 @@ const app = express(feathers());
 
 // Load app configuration
 app.configure(configuration());
-app.set('mongodb', process.env.MONGO_URI)
-app.set('authentication.secret', process.env.SECRET)
-app.set('authentication.oauth.google.key', process.env.GOOGLE_API_KEY)
-app.set('authentication.oauth.google.secret', process.env.GOOGLE_SECRET_KEY)
-app.set('authentication.oauth.facebook.key', process.env.FACEBOOK_API_KEY)
-app.set('authentication.oauth.facebook.secret', process.env.FACEBOOK_SECRET_KEY)
-app.set('authentication.oauth.github.key', process.env.GITHUB_API_KEY)
-app.set('authentication.oauth.github.secret', process.env.GITHUB_SECRET_KEY)
 
 // Enable security, CORS, compression, favicon and body parsing
 app.use(helmet());
