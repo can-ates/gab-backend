@@ -28,7 +28,8 @@ module.exports = function (app) {
       }],
       founder : {
         type: Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'User',
+        required: true
       },
       ticket : {
         type: String,

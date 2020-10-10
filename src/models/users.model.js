@@ -1,6 +1,9 @@
 // users-model.js - A mongoose model
 //
 // See http://mongoosejs.com/docs/models.html
+
+const { Schema } = require("mongoose");
+
 // for more of what you can do here.
 module.exports = function (app) {
   const modelName = 'users';
@@ -11,6 +14,10 @@ module.exports = function (app) {
       email: {type: String, required: true},
       avatar: {type: String},
       googleId: { type: String },
+      followedGroups : [{
+        type: Schema.Types.ObjectId,
+        ref: 'Room'
+      }],
 
       facebookId: { type: String },
 

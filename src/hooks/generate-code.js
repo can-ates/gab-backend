@@ -6,6 +6,7 @@ const { v4: uuid} = require('uuid')
 // eslint-disable-next-line no-unused-vars
 module.exports = (options = {}) => {
   return async context => {
+
     if(context.data.private) {
       context.data.ticket = uuid()
 

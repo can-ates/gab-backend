@@ -2,6 +2,8 @@ const { authenticate } = require('@feathersjs/authentication').hooks;
 
 const generateCode = require('../../hooks/generate-code');
 
+const addUsersFollowing = require('../../hooks/add-users-following');
+
 module.exports = {
   before: {
     all: [ authenticate('jwt') ],
@@ -17,7 +19,7 @@ module.exports = {
     all: [],
     find: [],
     get: [],
-    create: [],
+    create: [addUsersFollowing()],
     update: [],
     patch: [],
     remove: []
