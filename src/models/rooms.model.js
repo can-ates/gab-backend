@@ -22,6 +22,10 @@ module.exports = function (app) {
           ref: 'User',
         },
       ],
+      messages : [{
+        type: Schema.Types.ObjectId,
+        ref: 'Message'
+      }],
       founder : {
         type: Schema.Types.ObjectId,
         ref: 'User'
