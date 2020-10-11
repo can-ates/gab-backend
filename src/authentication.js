@@ -10,7 +10,7 @@ const axios = require('axios');
 
 class GitHubStrategy extends OAuthStrategy {
   async getEntityData(profile) {
-    console.log(profile);
+    
     const baseData = await super.getEntityData(profile);
 
     return {
@@ -43,7 +43,7 @@ class FaceBookStrategy extends OAuthStrategy {
   }
   async getEntityData(profile) {
     // `profile` is the data returned by getProfile
-    console.log(profile);
+    
     const baseData = await super.getEntityData(profile);
 
     return {
@@ -57,7 +57,7 @@ class FaceBookStrategy extends OAuthStrategy {
 
 class GoogleStrategy extends OAuthStrategy {
   async getEntityData(profile) {
-    console.log(profile);
+    
     // this will set 'googleId'
     const baseData = await super.getEntityData(profile);
 

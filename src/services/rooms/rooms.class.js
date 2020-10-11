@@ -8,6 +8,8 @@ exports.Rooms = class Rooms extends Service {
           $in: [...params.user.followedGroups],
         },
       },
+    }).catch(res =>{
+      console.log(res);
     });
   }
   async get(id, params) {}
@@ -17,7 +19,7 @@ exports.Rooms = class Rooms extends Service {
       private: data.private,
       founder: data.founder,
       ticket: data.ticket ? data.ticket : null,
-    });
+    })
   }
   async update(id, data, params) {}
   async patch(id, data, params) {}

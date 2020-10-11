@@ -4,6 +4,8 @@ const generateCode = require('../../hooks/generate-code');
 
 const addUsersFollowing = require('../../hooks/add-users-following');
 
+const roomError = require('../../hooks/room-error');
+
 module.exports = {
   before: {
     all: [ authenticate('jwt') ],
@@ -26,7 +28,7 @@ module.exports = {
   },
 
   error: {
-    all: [],
+    all: [roomError()],
     find: [],
     get: [],
     create: [],

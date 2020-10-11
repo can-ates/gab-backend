@@ -33,6 +33,9 @@ module.exports = function (app) {
       },
       ticket : {
         type: String,
+      },
+      avatar: {
+        type: String
       }
     },
     {
