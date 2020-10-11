@@ -14,11 +14,15 @@ exports.Rooms = class Rooms extends Service {
   }
   async get(id, params) {}
   async create(data, params) {
+
+
+
     return super.create({
       title: data.title,
       private: data.private,
       founder: data.founder,
       ticket: data.ticket ? data.ticket : null,
+      avatar: data.color
     })
   }
   async update(id, data, params) {}

@@ -6,12 +6,14 @@ const addUsersFollowing = require('../../hooks/add-users-following');
 
 const roomError = require('../../hooks/room-error');
 
+const generateAvatar = require('../../hooks/generate-avatar');
+
 module.exports = {
   before: {
     all: [ authenticate('jwt') ],
     find: [],
     get: [],
-    create: [generateCode()],
+    create: [generateCode(), generateAvatar()],
     update: [],
     patch: [],
     remove: []

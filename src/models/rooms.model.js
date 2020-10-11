@@ -35,7 +35,8 @@ module.exports = function (app) {
         type: String,
       },
       avatar: {
-        type: String
+        type: String,
+        default: null
       }
     },
     {
