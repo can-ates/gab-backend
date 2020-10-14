@@ -22,27 +22,30 @@ module.exports = function (app) {
           ref: 'User',
         },
       ],
-      messages : [{
-        type: Schema.Types.ObjectId,
-        ref: 'Message'
-      }],
-      founder : {
+      messages: [
+        {
+          type: Schema.Types.ObjectId,
+          ref: 'Message',
+        },
+      ],
+      founder: {
         type: Schema.Types.ObjectId,
         ref: 'User',
-        required: true
+        required: true,
       },
-      ticket : {
+      ticket: {
         type: String,
       },
       avatar: {
         type: String,
-        default: null
-      }
+        default: null,
+      },
     },
     {
       timestamps: true,
     }
   );
+
 
   // This is necessary to avoid model compilation errors in watch mode
   // see https://mongoosejs.com/docs/api/connection.html#connection_Connection-deleteModel

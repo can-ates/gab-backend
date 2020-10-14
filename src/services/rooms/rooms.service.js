@@ -5,9 +5,13 @@ const hooks = require('./rooms.hooks');
 
 module.exports = function (app) {
   const options = {
+    // events: ['followedGroups'],
     Model: createModel(app),
-    paginate: app.get('paginate'),
-    
+    paginate: {
+      default: 100,
+      max: 200
+    },
+    whitelist: ['$populate']
   };
 
   // Initialize our service with any options it requires

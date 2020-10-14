@@ -2,7 +2,7 @@
 //
 // See http://mongoosejs.com/docs/models.html
 
-const { Schema } = require("mongoose");
+const { Schema } = require('mongoose');
 
 // for more of what you can do here.
 module.exports = function (app) {
@@ -11,13 +11,15 @@ module.exports = function (app) {
   const schema = new mongooseClient.Schema(
     {
       name: { type: String, required: true },
-      email: {type: String, required: true},
-      avatar: {type: String},
+      email: { type: String, required: true },
+      avatar: { type: String },
       googleId: { type: String },
-      followedGroups : [{
-        type: Schema.Types.ObjectId,
-        ref: 'Room'
-      }],
+      followedGroups: [
+        {
+          type: Schema.Types.ObjectId,
+          ref: 'rooms',
+        },
+      ],
 
       facebookId: { type: String },
 

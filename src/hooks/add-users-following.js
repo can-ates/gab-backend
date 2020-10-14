@@ -4,17 +4,26 @@
 // eslint-disable-next-line no-unused-vars
 module.exports = (options = {}) => {
   return async context => {
-    
     context.app
       .service('users')
       .patch(
         context.params.user._id,
-        { $push: { followedGroups: context.result._id } },
-        (error, result) => {
-          if(error) error
-          else result
+        {
+          $push: { followedGroups: context.result._id },
+        },
+        {
+          query: { $populate: 'followedGroups', $select: ['followedGroups'] },
         }
-      );
+      )
+      .then(result => {
+        
+        // context.service.emit('followedGroups', {
+        //   groups: result.followedGroups,
+        // });
+      })
+      .catch(err => {
+        
+      });
 
     return context;
   };

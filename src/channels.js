@@ -7,6 +7,7 @@ module.exports = function(app) {
   app.on('connection', connection => {
     // On a new real-time connection, add it to the anonymous channel
     app.channel('anonymous').join(connection);
+    
   });
 
   app.on('login', (authResult, { connection }) => {
@@ -18,7 +19,7 @@ module.exports = function(app) {
       
       // The connection is no longer anonymous, remove it
       app.channel('anonymous').leave(connection);
-
+      
       // Add it to the authenticated user channel
       app.channel('authenticated').join(connection);
 
@@ -30,11 +31,20 @@ module.exports = function(app) {
       // If the user has joined e.g. chat rooms
       // if(Array.isArray(user.rooms)) user.rooms.forEach(room => app.channel(`rooms/${room.id}`).join(connection));
       
+      connection.user.followedGroups.forEach(group => {
+        app.channel(`rooms/${group._id}`).join(connection)
+      })
+
       // Easily organize users by email and userid for things like messaging
       // app.channel(`emails/${user.email}`).join(connection);
       // app.channel(`userIds/${user.id}`).join(connection);
     }
   });
+
+
+  // app.service('rooms').publish((data, context) => {
+  //   console.log(data, context);
+  // })
 
   // eslint-disable-next-line no-unused-vars
   app.publish((data, hook) => {
@@ -43,6 +53,7 @@ module.exports = function(app) {
 
     console.log('Publishing all events to all authenticated users. See `channels.js` and https://docs.feathersjs.com/api/channels.html for more information.'); // eslint-disable-line
 
+    //hangi channela bagli kullanicilarin eventi alacagini soyluyoruz
     // e.g. to publish all service events to all authenticated users use
     return app.channel('authenticated');
   });
