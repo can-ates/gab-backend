@@ -25,6 +25,6 @@ exports.Rooms = class Rooms extends Service {
     });
   }
   async update(id, data, params) {}
-  async patch(id, data, params) {}
+
   async remove(id, params) {}
 };

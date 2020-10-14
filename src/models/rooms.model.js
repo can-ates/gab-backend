@@ -19,18 +19,18 @@ module.exports = function (app) {
       participants: [
         {
           type: Schema.Types.ObjectId,
-          ref: 'User',
+          ref: 'users',
         },
       ],
       messages: [
         {
           type: Schema.Types.ObjectId,
-          ref: 'Message',
+          ref: 'messages',
         },
       ],
       founder: {
         type: Schema.Types.ObjectId,
-        ref: 'User',
+        ref: 'users',
         required: true,
       },
       ticket: {

@@ -15,6 +15,7 @@ module.exports = function (app) {
     },
     sender: {
       type: Schema.Types.ObjectId,
+      ref: 'users',
       required: true
     }
   }, {
