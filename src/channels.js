@@ -32,6 +32,7 @@ module.exports = function(app) {
       // if(Array.isArray(user.rooms)) user.rooms.forEach(room => app.channel(`rooms/${room.id}`).join(connection));
       
       connection.user.followedGroups.forEach(group => {
+        console.log(group._id);
         app.channel(`rooms/${group._id}`).join(connection)
       })
 
@@ -42,21 +43,23 @@ module.exports = function(app) {
   });
 
 
-  // app.service('rooms').publish((data, context) => {
-  //   console.log(data, context);
-  // })
+  app.service('rooms').publish('reflectMessages',(data, context) => {
+    // console.log(app.channels, data);
+    return app.channel(`rooms/${data.roomId}`)
+    
+  })
 
   // eslint-disable-next-line no-unused-vars
-  app.publish((data, hook) => {
-    // Here you can add event publishers to channels set up in `channels.js`
-    // To publish only for a specific event use `app.publish(eventname, () => {})`
+  // app.publish((data, hook) => {
+  //   // Here you can add event publishers to channels set up in `channels.js`
+  //   // To publish only for a specific event use `app.publish(eventname, () => {})`
 
-    console.log('Publishing all events to all authenticated users. See `channels.js` and https://docs.feathersjs.com/api/channels.html for more information.'); // eslint-disable-line
+  //   console.log('Publishing all events to all authenticated users. See `channels.js` and https://docs.feathersjs.com/api/channels.html for more information.'); // eslint-disable-line
 
-    //hangi channela bagli kullanicilarin eventi alacagini soyluyoruz
-    // e.g. to publish all service events to all authenticated users use
-    return app.channel('authenticated');
-  });
+  //   //hangi channela bagli kullanicilarin eventi alacagini soyluyoruz
+  //   // e.g. to publish all service events to all authenticated users use
+  //   return app.channel('authenticated');
+  // });
 
   // Here you can also add service specific event publishers
   // e.g. the publish the `users` service `created` event to the `admins` channel

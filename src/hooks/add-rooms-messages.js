@@ -4,12 +4,9 @@
 // eslint-disable-next-line no-unused-vars
 module.exports = (options = {}) => {
   return async context => {
-
-    
-
-    context.app
-      .service('rooms')
-      .patch(context.data.roomId, {
+    context.app.service('rooms').patch(
+      context.data.roomId,
+      {
         $push: { messages: context.result._id },
       },
       {
@@ -17,13 +14,18 @@ module.exports = (options = {}) => {
           $populate: {
             path: 'messages',
             populate: {
-              path: 'sender'
-            }
-          }
-        }
+              path: 'sender',
+            },
+          },
+        },
       }
-      )
+    ).then(res => {
       
+      context.app.service('rooms').emit('reflectMessages', {
+        messages: res.messages,
+        roomId: res._id
+      })
+    });
 
     return context;
   };

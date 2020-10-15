@@ -8,6 +8,12 @@ exports.Rooms = class Rooms extends Service {
           _id: {
             $in: [...params.user.followedGroups],
           },
+          $populate: {
+            path: 'messages',
+            populate: {
+              path: 'sender'
+            }
+          }
         },
       })
       .catch(res => {

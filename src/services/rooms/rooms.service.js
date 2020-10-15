@@ -5,7 +5,7 @@ const hooks = require('./rooms.hooks');
 
 module.exports = function (app) {
   const options = {
-    // events: ['followedGroups'],
+    events: ['reflectMessages'],
     Model: createModel(app),
     paginate: {
       default: 100,
