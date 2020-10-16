@@ -20,6 +20,7 @@ module.exports = (options = {}) => {
         },
       }
     ).then(res => {
+      context.app.channel(`rooms/${res._id}`).join(context.params.connection)
       
       context.app.service('rooms').emit('reflectMessages', {
         messages: res.messages,
