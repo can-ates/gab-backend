@@ -11,7 +11,7 @@ module.exports = function (app) {
       default: 100,
       max: 200
     },
-    whitelist: ['$populate']
+    whitelist: ['$populate', '$regex', '$search']
   };
 
   // Initialize our service with any options it requires

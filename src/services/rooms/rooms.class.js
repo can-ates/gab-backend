@@ -11,16 +11,28 @@ exports.Rooms = class Rooms extends Service {
           $populate: {
             path: 'messages',
             populate: {
-              path: 'sender'
-            }
-          }
+              path: 'sender',
+            },
+          },
         },
       })
       .catch(res => {
         console.log(res);
       });
   }
-  async get(id, params) {}
+  async get(id, params) {
+    return super
+      .find({
+        query: {
+          title: {
+            $regex: new RegExp(params.query.title, 'i'),
+          },
+          $select: ['_id', 'title', 'avatar'],
+          $limit: 5
+        },
+      })
+      .catch(err => console.log(err));
+  }
   async create(data, params) {
     return super.create({
       title: data.title,
