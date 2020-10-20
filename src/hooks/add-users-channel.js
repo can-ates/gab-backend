@@ -4,6 +4,7 @@
 // eslint-disable-next-line no-unused-vars
 module.exports = (options = {}) => {
   return async context => {
+    
     context.app
       .service('users')
       .patch(
@@ -16,12 +17,13 @@ module.exports = (options = {}) => {
         }
       )
       .then(result => {
-        context.app
-          .channel(`rooms/${context.result._id}`)
-          .join(context.params.connection);
+       
+        context.app.channel(`rooms/${context.result._id}`).join(context.params.connection)
       })
-      .catch(err => {});
+      .catch(err => {
+        
+      });
 
-    return context;
+    return context
   };
 };

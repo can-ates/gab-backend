@@ -28,7 +28,13 @@ exports.Rooms = class Rooms extends Service {
             $regex: new RegExp(params.query.title, 'i'),
           },
           $select: ['_id', 'title', 'avatar'],
-          $limit: 5
+          $limit: 5,
+          founder: {
+            $nin: [params.user._id, ...params.user.followedGroups],
+          },
+          participants: {
+            $nin: [params.user._id],
+          },
         },
       })
       .catch(err => console.log(err));

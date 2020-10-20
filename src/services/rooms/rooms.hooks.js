@@ -8,6 +8,8 @@ const roomError = require('../../hooks/room-error');
 
 const generateAvatar = require('../../hooks/generate-avatar');
 
+const addUsersChannel = require('../../hooks/add-users-channel');
+
 module.exports = {
   before: {
     all: [ authenticate('jwt') ],
@@ -25,7 +27,7 @@ module.exports = {
     get: [],
     create: [addUsersFollowing()],
     update: [],
-    patch: [],
+    patch: [addUsersChannel()],
     remove: []
   },
 
