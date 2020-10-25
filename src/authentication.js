@@ -10,7 +10,6 @@ const axios = require('axios');
 
 class GitHubStrategy extends OAuthStrategy {
   async getEntityData(profile) {
-    
     const baseData = await super.getEntityData(profile);
 
     return {
@@ -43,7 +42,7 @@ class FaceBookStrategy extends OAuthStrategy {
   }
   async getEntityData(profile) {
     // `profile` is the data returned by getProfile
-    
+
     const baseData = await super.getEntityData(profile);
 
     return {
@@ -57,7 +56,6 @@ class FaceBookStrategy extends OAuthStrategy {
 
 class GoogleStrategy extends OAuthStrategy {
   async getEntityData(profile) {
-    
     // this will set 'googleId'
     const baseData = await super.getEntityData(profile);
 
@@ -71,6 +69,26 @@ class GoogleStrategy extends OAuthStrategy {
   }
 }
 
+class TwitterStrategy extends OAuthStrategy {
+  async getProfile(profile) {
+    console.log(profile);
+
+    const userData = await axios.get(
+      'https://api.twitter.com/1.1/account/verify_credentials.json',
+      {
+        headers: {
+          oauth_token: profile.access_token,
+          oauth_token_secret: profile.access_secret,
+        },
+        params: {
+          include_email: true,
+        },
+      }
+    );
+    console.log(userData);
+  }
+}
+
 module.exports = app => {
   const authentication = new AuthenticationService(app);
 
@@ -78,6 +96,7 @@ module.exports = app => {
   authentication.register('github', new GitHubStrategy());
   authentication.register('facebook', new FaceBookStrategy());
   authentication.register('google', new GoogleStrategy());
+  authentication.register('twitter', new TwitterStrategy());
 
   app.use('/authentication', authentication);
   app.configure(expressOauth());

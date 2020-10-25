@@ -28,7 +28,7 @@
       "passwordField": "password"
     },
     "oauth": {
-      "redirect": "http://localhost:3000/",
+      "redirect": "REDIRECT",
       "google": {
         "key": "GOOGLE_API_KEY",
         "secret": "GOOGLE_SECRET_KEY",
@@ -46,8 +46,12 @@
         
       },
       "twitter": {
-        "key": "<twitter oauth key>",
-        "secret": "<twitter oauth secret>"
+        "key": "TWITTER_API_KEY",
+        "secret": "TWITTER_SECRET_KEY",
+        "include_email": true,
+        "skip_status": true
+        
+        
       },
       "github": {
         "key": "GITHUB_API_KEY",
