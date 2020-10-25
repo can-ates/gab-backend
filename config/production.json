@@ -1,4 +1,4 @@
 {
-  "host": "https://gab-chat-app.herokuapp.com/",
+  "host": "https://gab-chat-app.herokuapp.com",
   "port": "PORT"
 }
