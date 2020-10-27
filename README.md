@@ -1,45 +1,29 @@
-# server
+## Gab 
+Gab is a real-time chat app that you can create or join a room to interact with other people.
 
-> backend of Gab
 
-## About
+## Motivation
+Real-time messaging apps have become an integral part of all the web users.
+You nearly can't think of an app that does not have real-time functionality and It is something that every web developer should have experience with.
+Side Note: Feathers Js is a framework for real-time applications that I used in this project.
+ 
+## Screenshots
+100% RESPONSIVE
 
-This project uses [Feathers](http://feathersjs.com). An open source web framework for building modern real-time applications.
+<a href="https://imgur.com/fdR4ksB"><img src="https://i.imgur.com/fdR4ksB.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/eN3fBXo"><img src="https://i.imgur.com/eN3fBXo.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/5mj3h7u"><img src="https://i.imgur.com/5mj3h7u.png" title="source: imgur.com" /></a>
+<a href="https://imgur.com/BORVifP"><img src="https://i.imgur.com/BORVifP.png" title="source: imgur.com" /></a>
+## Tech/framework used
 
-## Getting Started
 
-Getting up and running is as easy as 1, 2, 3.
+<b>Utilized with</b>
+- [React](https://reactjs.org/)
+- [Feathers Js](https://feathersjs.com/)
+- [React Bootstrap](https://react-bootstrap.github.io/)
+- [Redux](https://redux.js.org/)
+- [Node.js](https://nodejs.org/en/)
+- [Express.js](https://expressjs.com/)
+- [Mongoose](https://mongoosejs.com/)
+- [MongoDB](https://www.mongodb.com/)
 
-1. Make sure you have [NodeJS](https://nodejs.org/) and [npm](https://www.npmjs.com/) installed.
-2. Install your dependencies
-
-    ```
-    cd path/to/server
-    npm install
-    ```
-
-3. Start your app
-
-    ```
-    npm start
-    ```
-
-## Testing
-
-Simply run `npm test` and all your tests in the `test/` directory will be run.
-
-## Scaffolding
-
-Feathers has a powerful command line interface. Here are a few things it can do:
-
-```
-$ npm install -g @feathersjs/cli          # Install Feathers CLI
-
-$ feathers generate service               # Generate a new Service
-$ feathers generate hook                  # Generate a new Hook
-$ feathers help                           # Show all commands
-```
-
-## Help
-
-For more information on all the things you can do with Feathers visit [docs.feathersjs.com](http://docs.feathersjs.com).
