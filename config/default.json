@@ -48,9 +48,8 @@
       "twitter": {
         "key": "TWITTER_API_KEY",
         "secret": "TWITTER_SECRET_KEY",
-        "include_email": true,
-        "skip_status": true
-        
+        "scope": ["email"],
+        "nonce": true
         
       },
       "github": {

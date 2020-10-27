@@ -56,8 +56,8 @@
     "helmet": "^3.23.3",
     "mongodb-core": "^3.2.7",
     "mongoose": "^5.10.8",
+    "randomstring": "^1.1.5",
     "serve-favicon": "^2.5.0",
-    "uuid": "^8.3.1",
     "winston": "^3.3.3"
   },
   "devDependencies": {

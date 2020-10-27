@@ -8,12 +8,18 @@ exports.Rooms = class Rooms extends Service {
           _id: {
             $in: [...params.user.followedGroups],
           },
-          $populate: {
-            path: 'messages',
-            populate: {
-              path: 'sender',
+          $populate: [
+            {
+              path: 'messages',
+              populate: {
+                path: 'sender',
+              },
             },
-          },
+            { path: 'participants' },
+            {
+              path: 'founder',
+            },
+          ],
         },
       })
       .catch(res => {
@@ -39,14 +45,26 @@ exports.Rooms = class Rooms extends Service {
       })
       .catch(err => console.log(err));
   }
+  //TODO HANDLE RETURNED FIELDS
   async create(data, params) {
-    return super.create({
-      title: data.title,
-      private: data.private,
-      founder: params.user._id,
-      ticket: data.ticket ? data.ticket : null,
-      avatar: data.color,
-    });
+    return super.create(
+      {
+        title: data.title,
+        private: data.private,
+        founder: params.user._id,
+        ticket: data.ticket ? data.ticket : null,
+        avatar: data.color,
+      },
+      {
+        query: {
+          $populate: [
+            {
+              path: 'founder',
+            },
+          ],
+        },
+      }
+    );
   }
   async update(id, data, params) {}
 
